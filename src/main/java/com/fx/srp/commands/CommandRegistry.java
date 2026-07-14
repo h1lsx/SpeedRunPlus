@@ -131,6 +131,26 @@ public class CommandRegistry {
                         .handler(ctx -> gameManager.resetTriangulation(ctx.getSender()))
         );
 
+        CommandArgument<CommandSender, SeedCategory.SeedType> seedTypeArg = EnumArgument.of(
+                SeedCategory.SeedType.class,
+                "type"
+        );
+
+        CommandArgument<CommandSender, Integer> amountArg = IntegerArgument.<CommandSender>builder("amount")
+                .withMin(1)
+                .withMax(10)
+                .build();
+
+        commandManager.command(commandManager.commandBuilder(BASE_COMMAND)
+                .literal("seed")
+                .permission(usagePermission)
+                .argument(seedTypeArg)
+                .argument(amountArg)
+                .handler(ctx ->
+                        AdminAction.SEED.getExecutor().accept(gameManager, ctx)
+                )
+        );
+
         // Register admin commands
         registerAdminCommands(commandManager, gameManager);
     }
@@ -179,28 +199,6 @@ public class CommandRegistry {
                         .handler(ctx ->
                                 AdminAction.PODIUM.getExecutor().accept(gameManager, ctx)
                         )
-        );
-
-        // Admin seed command
-        CommandArgument<CommandSender, SeedCategory.SeedType> seedTypeArg = EnumArgument.of(
-                SeedCategory.SeedType.class,
-                "type"
-        );
-
-        CommandArgument<CommandSender, Integer> amountArg = IntegerArgument.<CommandSender>builder("amount")
-                .withMin(1)
-                .withMax(10)
-                .build();
-
-        commandManager.command(commandManager.commandBuilder(BASE_COMMAND)
-                .literal(adminLiteral)
-                .literal("seed")
-                .permission(adminPermission)
-                .argument(seedTypeArg)
-                .argument(amountArg)
-                .handler(ctx ->
-                        AdminAction.SEED.getExecutor().accept(gameManager, ctx)
-                )
         );
     }
 }
