@@ -309,13 +309,13 @@ public class GameManager {
      * @param player the player who quit
      */
     public void handlePlayerQuit(Player player) {
-        getActiveRun(player).ifPresent(run -> run.onPlayerLeave(player));
+        /*getActiveRun(player).ifPresent(run -> run.onPlayerLeave(player));
 
         for (GameMode gameMode : GameMode.values()) {
             gameMode.getManager()
                     .asMultiplayerManager()
                     .ifPresent(manager -> manager.handlePlayerQuit(player));
-        }
+        }*/
     }
 
     /**
