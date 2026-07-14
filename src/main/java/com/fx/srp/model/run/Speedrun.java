@@ -2,6 +2,7 @@ package com.fx.srp.model.run;
 
 import com.fx.srp.managers.util.WorldManager;
 import com.fx.srp.model.player.Speedrunner;
+import com.fx.srp.util.ui.TimerUtil;
 import com.fx.srp.commands.GameMode;
 import com.fx.srp.model.seed.SeedCategory;
 import lombok.Getter;
@@ -63,6 +64,18 @@ public abstract class Speedrun implements ISpeedrun {
      */
     public List<Speedrunner> getSpeedrunners() {
         return List.of(owner);
+    }
+
+    /**
+     * Called when a player rejoins this speedrun.
+     * <p>
+     * This restores the stopwatch.
+     * </p>
+     *
+     * @param player The {@code Player} who joined the server.
+     */
+    public void onPlayerJoin(Player player) {
+        TimerUtil.createTimer(List.of(player), getStopWatch());
     }
 
     /**

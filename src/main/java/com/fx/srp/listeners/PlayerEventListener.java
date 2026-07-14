@@ -8,6 +8,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerRespawnEvent;
+import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
 /**
@@ -50,6 +51,16 @@ public class PlayerEventListener implements Listener {
     @EventHandler(priority = EventPriority.HIGH)
     public void onRespawn(PlayerRespawnEvent event) {
         gameManager.handlePlayerRespawn(event);
+    }
+
+    /**
+     * Handles {@link PlayerJoinEvent}.
+     *
+     * @param event the join event triggered when a player joins the server
+     */
+    @EventHandler
+    public void onJoin(PlayerJoinEvent event) {
+        gameManager.handlePlayerJoin(event.getPlayer());
     }
 
     /**

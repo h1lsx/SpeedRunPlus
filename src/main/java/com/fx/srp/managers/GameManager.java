@@ -304,6 +304,15 @@ public class GameManager {
     }
 
     /**
+     * Handles player join events by readding the scoreboard timer.
+     *
+     * @param player the player who joined
+     */
+    public void handlePlayerJoin(Player player) {
+        getActiveRun(player).ifPresent(run -> run.onPlayerJoin(player));
+    }
+    
+    /**
      * Handles player quit events by notifying the active run they left.
      *
      * @param player the player who quit
