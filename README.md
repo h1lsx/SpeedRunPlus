@@ -139,10 +139,13 @@ game-rules:
   assisted-triangulation:
 
     # Whether to use assisted triangulation
-    use-assisted-triangulation: true
+    use-assisted-triangulation: false
 
     # The triangulation strategy - specifies the triangulation algorithm and thereby the level of assistance and
-    # variance during the assisted triangulation
+    # variance during the assisted triangulation, may be:
+    #   - DETERMINISTIC           (easiest - triangulation is based on eye directions)
+    #   - ASSISTED-PROBABILISTIC  (moderate - triangulation is based on player measurements with feedback)
+    #   - PROBABILISTIC           (hardest - triangulation is based on player measurements with minimal feedback)
     strategy: DETERMINISTIC
 
   # Speedrun world seeds
@@ -156,23 +159,33 @@ game-rules:
 
     # Weights for each type of seed (higher number = more likely to appear)
     weights:
-      MAPLESS: 0
-      VILLAGE: 3
-      TEMPLE: 1
-      SHIPWRECK: 2
-      RUINED_PORTAL: 1
-      RANDOM: 1
+      MAPLESS: 1
+      VILLAGE: 2
+      DESERT_TEMPLE: 3
+      JUNGLE_TEMPLE: 2
+      SHIPWRECK: 1
+      MAPLESS_OP: 3
+      VILLAGE_OP: 2
+      DESERT_TEMPLE_OP: 2
+      JUNGLE_TEMPLE_OP: 4
+      SHIPWRECK_OP: 3
+      RUINED_PORTAL: 4
+      RANDOM: 0
 
   # Maximum number of players allowed to speedrun simultaneously
   # Used it to limit the toll on the server's resources
-  max-players: 4
+  max-players: 12
+
+  # Maximum number of players allowed in a single multiplayer game mode party
+  # May never exceed 'max-players'
+  max-party-size: 8
 
   # Maximum duration of a speedrun in minutes
   # Use it to limit the time a player can spend in a single run
-  max-time-minutes: 120
+  max-time-minutes: 240
 
   # Time before requests for BattleSpeedrun / Co-op are invalidated
-  max-request-seconds: 30
+  max-request-seconds: 60
 
 # Prefix used for generated speedrun worlds
 world-prefix:
@@ -184,13 +197,13 @@ world-prefix:
 timer:
 
   # The amount of time to countdown from, when starting a speedrun in seconds
-  countdown-seconds: 10
+  countdown-seconds: 15
 
 # Podium configuration (solo runs exclusively)
 podium:
 
   # Maximum number of leaderboard entries to display on the podium
-  max: 5
+  max: 10
 
   # The world in which the following positions are used as the podium
   world: world
@@ -198,36 +211,16 @@ podium:
   # The positions in the above world where the leaderboard entries are created as the podium
   positions:
     1:
-      x: 256.5
-      y: 65.5
-      z: 183.5
-      yaw: 180
-    2:
-      x: 254.5
-      y: 64.5
-      z: 182.5
-      yaw: 180
-    3:
-      x: 258.5
-      y: 64.5
-      z: 182.5
-      yaw: 180
-    4:
-      x: 260.5
-      y: 63.5
-      z: 181.5
-      yaw: 180
-    5:
-      x: 104.5
-      y: 63.5
-      z: 181.5
-      yaw: 180
+      x: 0.5
+      y: 80.5
+      z: 0.5
+      yaw: 90
 
 # AFK configuration
 afk:
 
   # Minutes before ending a speedrun due to inactivity
-  timeout-minutes: 5
+  timeout-minutes: 15
 
   # Intervals between each AFK check
   check-interval-seconds: 60

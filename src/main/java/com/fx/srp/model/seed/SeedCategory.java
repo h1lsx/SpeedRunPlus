@@ -29,8 +29,14 @@ public class SeedCategory {
     public enum SeedType {
         MAPLESS("zsg"),
         VILLAGE("zsgvillage"),
-        TEMPLE("zsgtemple"),
+        DESERT_TEMPLE("zsgtemple"),
+        JUNGLE_TEMPLE("zsgjungletemple"),
         SHIPWRECK("zsgshipwreck"),
+        MAPLESS_OP("zsgop"),
+        VILLAGE_OP("zsgvillageop"),
+        DESERT_TEMPLE_OP("zsgtempleop"),
+        JUNGLE_TEMPLE_OP("zsgjungletempleop"),
+        SHIPWRECK_OP("zsgshipwreckop"),
         RUINED_PORTAL("rpseedbank"),
         RANDOM(null);
 

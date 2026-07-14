@@ -21,13 +21,13 @@ game-rules:
     #   - DETERMINISTIC           (easiest - triangulation is based on eye directions)
     #   - ASSISTED-PROBABILISTIC  (moderate - triangulation is based on player measurements with feedback)
     #   - PROBABILISTIC           (hardest - triangulation is based on player measurements with minimal feedback)
-    strategy: ASSISTED-PROBABILISTIC
+    strategy: DETERMINISTIC
 
   # Speedrun world seeds
   filtered-seeds:
 
     # Whether to use filtered seeds or rely on random seeds
-    use-filtered-seeds: false
+    use-filtered-seeds: true
 
     # Filtered seeds API
     filtered-seeds-api: https://filteredseed.com/getRandomUsedSeed/
@@ -35,26 +35,32 @@ game-rules:
     # Weights for each type of seed (higher number = more likely to appear)
     weights:
       MAPLESS: 1
-      VILLAGE: 1
-      TEMPLE: 1
+      VILLAGE: 2
+      DESERT_TEMPLE: 3
+      JUNGLE_TEMPLE: 2
       SHIPWRECK: 1
-      RUINED_PORTAL: 1
-      RANDOM: 1
+      MAPLESS_OP: 3
+      VILLAGE_OP: 2
+      DESERT_TEMPLE_OP: 2
+      JUNGLE_TEMPLE_OP: 4
+      SHIPWRECK_OP: 3
+      RUINED_PORTAL: 4
+      RANDOM: 0
 
   # Maximum number of players allowed to speedrun simultaneously
   # Used it to limit the toll on the server's resources
-  max-players: 4
+  max-players: 12
 
   # Maximum number of players allowed in a single multiplayer game mode party
   # May never exceed 'max-players'
-  max-party-size: 4
+  max-party-size: 8
 
   # Maximum duration of a speedrun in minutes
   # Use it to limit the time a player can spend in a single run
-  max-time-minutes: 120
+  max-time-minutes: 240
 
   # Time before requests for BattleSpeedrun / Co-op are invalidated
-  max-request-seconds: 30
+  max-request-seconds: 60
 
 # Prefix used for generated speedrun worlds
 world-prefix:
@@ -66,7 +72,7 @@ world-prefix:
 timer:
 
   # The amount of time to countdown from, when starting a speedrun in seconds
-  countdown-seconds: 10
+  countdown-seconds: 15
 
 # Podium configuration (solo runs exclusively)
 podium:
@@ -89,7 +95,7 @@ podium:
 afk:
 
   # Minutes before ending a speedrun due to inactivity
-  timeout-minutes: 5
+  timeout-minutes: 15
 
   # Intervals between each AFK check
   check-interval-seconds: 60

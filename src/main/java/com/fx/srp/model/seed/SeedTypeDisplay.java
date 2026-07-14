@@ -14,10 +14,16 @@ public final class SeedTypeDisplay {
     private static final Map<SeedCategory.SeedType, ChatColor> COLORS = new EnumMap<>(SeedCategory.SeedType.class);
 
     static {
-        COLORS.put(SeedCategory.SeedType.MAPLESS, ChatColor.GOLD);
-        COLORS.put(SeedCategory.SeedType.VILLAGE, ChatColor.DARK_GREEN);
-        COLORS.put(SeedCategory.SeedType.TEMPLE, ChatColor.YELLOW);
-        COLORS.put(SeedCategory.SeedType.SHIPWRECK, ChatColor.AQUA);
+        COLORS.put(SeedCategory.SeedType.MAPLESS, ChatColor.BOLD);
+        COLORS.put(SeedCategory.SeedType.VILLAGE, ChatColor.BOLD);
+        COLORS.put(SeedCategory.SeedType.DESERT_TEMPLE, ChatColor.BOLD);
+        COLORS.put(SeedCategory.SeedType.JUNGLE_TEMPLE, ChatColor.BOLD);
+        COLORS.put(SeedCategory.SeedType.SHIPWRECK, ChatColor.BOLD);
+        COLORS.put(SeedCategory.SeedType.MAPLESS_OP, ChatColor.GOLD);
+        COLORS.put(SeedCategory.SeedType.VILLAGE_OP, ChatColor.DARK_GREEN);
+        COLORS.put(SeedCategory.SeedType.DESERT_TEMPLE_OP, ChatColor.YELLOW);
+        COLORS.put(SeedCategory.SeedType.JUNGLE_TEMPLE_OP, ChatColor.GREEN);
+        COLORS.put(SeedCategory.SeedType.SHIPWRECK_OP, ChatColor.AQUA);
         COLORS.put(SeedCategory.SeedType.RUINED_PORTAL, ChatColor.DARK_PURPLE);
         COLORS.put(SeedCategory.SeedType.RANDOM, ChatColor.DARK_RED);
     }
