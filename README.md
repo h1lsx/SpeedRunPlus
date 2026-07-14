@@ -91,14 +91,15 @@ For additional info and help, see the subsections below or use the `/srp help` c
 | `/srp battle reset`            | Reset the player's world in the current speedrun battle                |
 | `/srp battle surrender`        | Surrender and stop the battle speedrun - awarding the opponent the win |
 
-#### 🫂 **Co-op**
+#### 🫂 **Co-op and Parties (added in n-player-coop branch)**
 
-| Command                      | Description                                            |
-|:-----------------------------|:-------------------------------------------------------|
-| `/srp coop request [player]` | Request a player to join you in a cooperative speedrun |
-| `/srp coop accept`           | Accept a request and start a cooperative speedrun      |
-| `/srp coop decline`          | Decline a request to a cooperative speedrun            |
-| `/srp coop surrender`        | Stop the current cooperative speedrun - no winners     |
+| Command                      | Description                                                 |
+|:-----------------------------|:------------------------------------------------------------|
+| `/srp coop request [player]` | Invite a player to join your part in a cooperative speedrun |
+| `/srp coop accept`           | Accept a request and join a cooperative speedrun party      |
+| `/srp coop decline`          | Decline a request to a cooperative speedrun party           |
+| `/srp coop start`            | Start the current cooperative speedrun                      |
+| `/srp coop stop`             | Stop the current cooperative speedrun                       |
 
 ### 🛡️ Admin commands
 
