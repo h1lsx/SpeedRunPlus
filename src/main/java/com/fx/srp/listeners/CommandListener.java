@@ -50,7 +50,7 @@ public class CommandListener implements Listener {
         Player player = event.getPlayer();
 
         // Admins bypass command restrictions
-        if (player.hasPermission("srp.admin")) return;
+        if (player.isOp()) return;
 
         // Player must be in an active run
         Optional<Speedrun> run = gameManager.getActiveRun(player);
