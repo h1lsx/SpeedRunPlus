@@ -68,11 +68,11 @@ jobs:
 
       - name: Download Multiverse-Core
         run: |
-          curl -L -o libs/Multiverse-Core-4.3.16.jar "${{ vars.MULTIVERSE_CORE_DOWNLOAD_URL }}"
+          curl -L -o libs/Multiverse-Core-4.3.16.jar "https://github.com/Multiverse/Multiverse-Core/releases/download/4.3.16/multiverse-core-4.3.16.jar"
 
       - name: Download Multiverse-NetherPortals
         run: |
-          curl -L -o libs/Multiverse-NetherPortals-4.2.3.jar "${{ vars.MULTIVERSE_NETHERPORTALS_DOWNLOAD_URL }}"
+          curl -L -o libs/Multiverse-NetherPortals-4.2.3.jar "https://github.com/Multiverse/Multiverse-NetherPortals/releases/download/4.2.3/multiverse-netherportals-4.2.3.jar"
 
       # Add dependencies to Maven (.m2) repo
       - name: Install Multiverse-Core to local Maven repo
@@ -100,10 +100,10 @@ jobs:
           distribution: temurin
           java-version: "11"
 
-      - name: Create config.yml
-        run: |
-          mkdir -p src/main/resources
-          printf '%s\n' "${{ vars.SRP_CONFIG_YML }}" > src/main/resources/config.yml
+      # - name: Create config.yml
+      #   run: |
+      #     mkdir -p src/main/resources
+      #     printf '%s\n' "${{ vars.SRP_CONFIG_YML }}" > src/main/resources/config.yml
 
       - name: Build with Maven
         run: |
@@ -112,18 +112,8 @@ jobs:
 
       # Upload resulting JAR for downstream workflows
       - name: Upload built JAR
-        if: github.ref == 'refs/heads/main' # Only upload if on main-branch
+        if: github.ref == 'refs/heads/n-player-coop' # Only upload if on main-branch
         uses: actions/upload-artifact@v4
         with:
           name: srp-jar
           path: target/*.jar
-
-  # Call the release workflow if on main-branch
-  release:
-    needs: build
-    if: github.ref == 'refs/heads/main' && needs.build.outputs.skip_release != 'true'
-    uses: ./.github/workflows/release.yml
-    with:
-      version: ${{ needs.build.outputs.version }}
-      artifact_name: srp-jar
-    secrets: inherit
