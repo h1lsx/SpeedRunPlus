@@ -10,6 +10,7 @@ import org.bukkit.GameMode;
 import org.bukkit.advancement.Advancement;
 import org.bukkit.advancement.AdvancementProgress;
 import org.bukkit.entity.Player;
+import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.potion.PotionEffect;
@@ -228,6 +229,7 @@ public class Speedrunner {
         // Clear armor & inventory
         inventory.clear();
         inventory.setArmorContents(null);
+        inventory.setItem(0, new ItemStack(Material.COMPASS));
     }
 
     private void clearPlayerAdvancements(Player player){
